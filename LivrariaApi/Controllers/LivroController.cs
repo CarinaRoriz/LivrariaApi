@@ -7,13 +7,13 @@ using LivrariaApi.Modelos;
 
 namespace LivrariaApi.Controllers
 {
-    [Route("livraria")]
+    [Route("livro")]
     [ApiController]
-    public class LivrariaController : ControllerBase
+    public class LivroController : ControllerBase
     {
         List<Livro> listaLivros;
 
-        public LivrariaController()
+        public LivroController()
         {
             CriaTabelas();
         }
@@ -28,13 +28,13 @@ namespace LivrariaApi.Controllers
 
         }
 
-        [HttpGet("livros")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Livro>>> GetLivros()
         {
             return listaLivros;
         }
         
-        [HttpGet("livros/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Livro>> GetLivros(int id)
         {
             var livro = listaLivros.Where(l=>l.Id == id).FirstOrDefault();
@@ -47,7 +47,7 @@ namespace LivrariaApi.Controllers
             return livro;
         }
 
-        [HttpGet("livros/categoria/{id}")]
+        [HttpGet("categoria/{id}")]
         public async Task<ActionResult<List<Livro>>> GetLivrosPorCategoria(int id)
         {
             List<Livro> livros = listaLivros.Where(l => l.CodCategoria == id).ToList();
@@ -60,7 +60,7 @@ namespace LivrariaApi.Controllers
             return livros;
         }
         
-        [HttpPost("livros")]
+        [HttpPost]
         public async Task<ActionResult<List<Livro>>> CadastrarLivro(Livro livro)
         {
             Livro novoLivro = new Livro() { Id = (listaLivros.Max(l=>l.Id) + 1), Nome = livro.Nome, Descricao = livro.Descricao, CodCategoria = livro.CodCategoria, Preco = livro.Preco, QuantPaginas = livro.QuantPaginas };
