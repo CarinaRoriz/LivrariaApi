@@ -13,6 +13,8 @@ namespace LivrariaApi.Controllers
     {
         List<Livro> listaLivros;
 
+        List<ComentarioLivro> listaComentarios;
+
         public LivroController()
         {
             CriaTabelas();
@@ -26,6 +28,9 @@ namespace LivrariaApi.Controllers
                 new Livro { Id = 3, Nome = "Livro 3", Descricao = "Livro 3", Preco = 25, QuantPaginas = 350, CodCategoria = 2 }
             };
 
+            listaComentarios = new List<ComentarioLivro>() {
+                new ComentarioLivro() { Id = 1, IdLivro = 3, IdUsuario = 2, DataComentario = new System.DateTime(2019, 04, 07), Descricao = "Ótima leitura" }
+            };
         }
 
         [HttpGet]
@@ -67,6 +72,28 @@ namespace LivrariaApi.Controllers
             listaLivros.Add(novoLivro);
 
             return listaLivros;
+        }
+
+        [HttpPost("comentario")]
+        public async Task<ActionResult<List<ComentarioLivro>>> CadastrarComentarioLivro(ComentarioLivro comentarioLivro)
+        {
+            ComentarioLivro novoComentario = new ComentarioLivro() { Id = ((listaComentarios.Count() == 0) ? 1 : (listaComentarios.Max(l => l.Id) + 1)), IdLivro = comentarioLivro.IdLivro, IdUsuario = comentarioLivro.IdUsuario, DataComentario = comentarioLivro.DataComentario, Descricao = comentarioLivro.Descricao };
+            listaComentarios.Add(novoComentario);
+
+            return listaComentarios;
+        }
+
+        [HttpGet("comentario/{id}")]
+        public async Task<ActionResult<List<ComentarioLivro>>> GetComentariosPorLivro(int id)
+        {
+            List<ComentarioLivro> comentariosLivros = listaComentarios.Where(l => l.IdLivro == id).ToList();
+
+            if (comentariosLivros.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            return comentariosLivros;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace LivrariaApi.Modelos
 {
     public class ComentarioLivro
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int IdLivro { get; set; }
         public int IdUsuario { get; set; }
         public string Descricao { get; set; }
