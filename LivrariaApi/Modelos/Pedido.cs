@@ -7,8 +7,9 @@ namespace LivrariaApi.Modelos
 {
     public class Pedido
     {
-        public int Id { get; set; }
-        public int IdUsuario { get; set; }
-        public decimal ValorTotal { get; set; }
+        public long Id { get; set; }
+        public long IdUsuario { get; set; }
+        public decimal? ValorTotal { get; set; }
+        public List<ItemPedido> listaItensPedido { get; set; }
     }
 }

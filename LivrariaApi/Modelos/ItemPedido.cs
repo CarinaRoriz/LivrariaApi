@@ -7,10 +7,10 @@ namespace LivrariaApi.Modelos
 {
     public class ItemPedido
     {
-        public int Id { get; set; }
-        public int IdPedido { get; set; }
-        public int IdLivro { get; set; }
-        public int Quantidade { get; set; }
+        public long Id { get; set; }
+        public long IdPedido { get; set; }
+        public long IdLivro { get; set; }
+        public decimal Quantidade { get; set; }
         public decimal Valor { get; set; }
     }
 }

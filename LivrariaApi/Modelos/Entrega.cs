@@ -11,7 +11,7 @@ namespace LivrariaApi.Modelos
         public int IdPedido { get; set; }
         public string Endereco { get; set; }
         public DateTime DataPrevista { get; set; }
-        public DateTime DataEntrega { get; set; }
+        public DateTime? DataEntrega { get; set; }
         public int IdSituacao { get; set; }
     }
 }
