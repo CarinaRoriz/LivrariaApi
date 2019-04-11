@@ -7,7 +7,7 @@ using LivrariaApi.Modelos;
 
 namespace LivrariaApi.Controllers
 {
-    [Route("entrega")]
+    [Route("v1/entregas")]
     [ApiController]
     public class EntregaController : ControllerBase
     {

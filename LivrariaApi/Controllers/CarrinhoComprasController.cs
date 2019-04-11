@@ -7,7 +7,7 @@ using LivrariaApi.Modelos;
 
 namespace LivrariaApi.Controllers
 {
-    [Route("carrinho")]
+    [Route("v1/carrinhos")]
     [ApiController]
     public class CarrinhoComprasController : ControllerBase
     {
@@ -74,6 +74,7 @@ namespace LivrariaApi.Controllers
             listaCarrinhos.Add(novoCarrinho);
 
             return listaCarrinhos;
+
         }
 
         [HttpPost("{id}/itens")]

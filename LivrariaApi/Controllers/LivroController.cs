@@ -7,7 +7,7 @@ using LivrariaApi.Modelos;
 
 namespace LivrariaApi.Controllers
 {
-    [Route("livro")]
+    [Route("v1/livros")]
     [ApiController]
     public class LivroController : ControllerBase
     {
@@ -47,7 +47,7 @@ namespace LivrariaApi.Controllers
             return livro;
         }
 
-        [HttpGet("categoria/{id}")]
+        [HttpGet("categorias/{id}")]
         public async Task<ActionResult<List<Livro>>> GetLivrosPorCategoria(int id)
         {
             List<Livro> livros = listaLivros.Where(l => l.CodCategoria == id).ToList();
@@ -69,7 +69,7 @@ namespace LivrariaApi.Controllers
             return listaLivros;
         }
 
-        [HttpPost("comentario")]
+        [HttpPost("comentarios")]
         public async Task<ActionResult<List<ComentarioLivro>>> CadastrarComentarioLivro(ComentarioLivro comentarioLivro)
         {
             ComentarioLivro novoComentario = new ComentarioLivro() { Id = ((listaComentarios.Count() == 0) ? 1 : (listaComentarios.Max(l => l.Id) + 1)), IdLivro = comentarioLivro.IdLivro, IdUsuario = comentarioLivro.IdUsuario, DataComentario = comentarioLivro.DataComentario, Descricao = comentarioLivro.Descricao };
@@ -78,7 +78,7 @@ namespace LivrariaApi.Controllers
             return listaComentarios;
         }
 
-        [HttpGet("comentario/{id}")]
+        [HttpGet("comentarios/{id}")]
         public async Task<ActionResult<List<ComentarioLivro>>> GetComentariosPorLivro(int id)
         {
             List<ComentarioLivro> comentariosLivros = listaComentarios.Where(l => l.IdLivro == id).ToList();
