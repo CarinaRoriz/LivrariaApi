@@ -15,11 +15,6 @@ namespace LivrariaApi.Controllers
 
         public EntregaController()
         {
-            CriaTabelas();
-        }
-
-        public void CriaTabelas()
-        {
             //Situação 1: Aguardando Entrega
             //Situação 2: Entregue
 

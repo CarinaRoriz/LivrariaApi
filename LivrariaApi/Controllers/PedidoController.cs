@@ -16,11 +16,6 @@ namespace LivrariaApi.Controllers
 
         public PedidoController()
         {
-            CriaTabelas();
-        }
-
-        public void CriaTabelas()
-        {
             listaItensPedido = new List<ItemPedido>
             {
                 new ItemPedido { Id = 1, IdPedido = 1, IdLivro = 1, Quantidade = 2, Valor = 20 },

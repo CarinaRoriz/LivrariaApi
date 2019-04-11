@@ -16,11 +16,6 @@ namespace LivrariaApi.Controllers
 
         public CarrinhoComprasController()
         {
-            CriaTabelas();
-        }
-        
-        public void CriaTabelas()
-        {
             listaItensCarrinhos = new List<ItemCarrinhoCompras>
             {
                 new ItemCarrinhoCompras { Id = 1, IdCarrinhoCompras = 1, IdLivro = 1, Quantidade = 2, Valor = 20 },

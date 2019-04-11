@@ -17,11 +17,6 @@ namespace LivrariaApi.Controllers
 
         public LivroController()
         {
-            CriaTabelas();
-        }
-        
-        public void CriaTabelas()
-        {
             listaLivros = new List<Livro>() {
                 new Livro { Id = 1, Nome = "Livro 1", Descricao = "Livro 1", Preco = 10, QuantPaginas = 10, CodCategoria = 1 },
                 new Livro { Id = 2, Nome = "Livro 2", Descricao = "Livro 2", Preco = 20, QuantPaginas = 40, CodCategoria = 2 },
